@@ -1,0 +1,1 @@
+This is initial single.php
