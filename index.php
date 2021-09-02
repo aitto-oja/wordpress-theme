@@ -1,0 +1,1 @@
+This is my custom theme index.php page. 
