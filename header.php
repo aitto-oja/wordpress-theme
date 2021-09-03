@@ -7,14 +7,14 @@
     <header class="site-header">
       <div class="container">
         <h1 class="school-logo-text float-left">
-          <a href="#"><strong>Reeta</strong> Aitto-oja</a>
+          <a href="<?php echo site_url(); ?>"><strong>Reeta</strong> Aitto-oja</a>
         </h1>
         <span class="js-search-trigger site-header__search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span>
         <i class="site-header__menu-trigger fa fa-bars" aria-hidden="true"></i>
         <div class="site-header__menu group">
           <nav class="main-navigation">
             <ul>
-              <li><a href="#">About Me</a></li>
+              <li><a href="<?php echo site_url('/about-me'); ?>">About Me</a></li>
               <li><a href="#">Projects</a></li>
               <li><a href="#">Events</a></li>
               <li><a href="#">Blog</a></li>
