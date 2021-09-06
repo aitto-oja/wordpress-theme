@@ -30,8 +30,15 @@ while(have_posts()) {
             <?php } 
         ?>
         
+        <?php 
+        $child_pages = get_pages(array(
+            'child_of' => get_the_ID(), 
+        ));
+        if ($theParent or $child_pages) { ?>
         <div class="page-links">
-            <h2 class="page-links__title"><a href="<?php echo get_permalink($theParent); ?>"><?php echo get_the_title($theParent); ?></a></h2>
+            <h2 class="page-links__title">
+                <a href="<?php echo get_permalink($theParent); ?>"><?php echo get_the_title($theParent); ?></a>
+            </h2>
             <ul class="min-list">
                 <?php 
                     if ($theParent) {
@@ -46,6 +53,7 @@ while(have_posts()) {
                 ?>
             </ul>
         </div>
+        <?php } ?>
 
         <div class="generic-content">
             <?php the_content(); ?>
