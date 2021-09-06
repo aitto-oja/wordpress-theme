@@ -5,7 +5,7 @@ get_header(); ?>
 <div class="page-banner">
     <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/gray-satellite-disc-on-field-copy.jpg'); ?>)"></div>
     <div class="page-banner__content container t-center c-white">
-        <h1 class="headline headline--large">Hello!</h1>
+        <h1 class="headline headline--large">Hello, World!</h1>
         <h2 class="headline headline--medium">My name is Reeta.</h2>
         <h3 class="headline headline--small">Why don&rsquo;t you check out my <strong>projects</strong>?</h3>
         <a href="#" class="btn btn--large btn--blue">Explore Projects</a>
@@ -92,7 +92,7 @@ get_header(); ?>
                     </div>
                 </div>
             </div>
-            <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/saranen-primary-logo-2020-rgb.png'); ?>)">
+            <div class="hero-slider__slide" style="background-image: url(<?php echo get_theme_file_uri('/images/saranen-intro-kuva.jpeg'); ?>)">
                 <div class="hero-slider__interior container">
                     <div class="hero-slider__overlay">
                         <h2 class="headline headline--medium t-center">Saranen Consulting</h2>
