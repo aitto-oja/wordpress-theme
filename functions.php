@@ -18,3 +18,15 @@ function aittooja_features() {
 }
 
 add_action('after_setup_theme', 'aittooja_features');
+
+function aittooja_post_types() {
+    register_post_type('event', array(
+        'public' => true, 
+        'labels' => array(
+            'name' => 'Events', 
+        ), 
+        'menu_icon' => 'dashicons-calendar', 
+    ));
+}
+
+add_action('init', 'aittooja_post_types');
