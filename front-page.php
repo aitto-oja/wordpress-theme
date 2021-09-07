@@ -25,32 +25,20 @@ get_header(); ?>
 
                 while ($homepageEvents->have_posts()) {
                     $homepageEvents->the_post(); ?>
-                    <li><?php the_title(); ?></li>
+                    <div class="event-summary">
+                        <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+                            <span class="event-summary__month">Mar</span>
+                            <span class="event-summary__day">25</span>
+                        </a>
+                        <div class="event-summary__content">
+                            <h5 class="event-summary__title headline headline--tiny"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                            <p><?php echo wp_trim_words(get_the_content(), 10); ?> <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a></p>
+                        </div>
+                    </div>
                 <?php }
             ?>
 
-            <div class="event-summary">
-                <a class="event-summary__date t-center" href="#">
-                    <span class="event-summary__month">Mar</span>
-                    <span class="event-summary__day">25</span>
-                </a>
-                <div class="event-summary__content">
-                    <h5 class="event-summary__title headline headline--tiny"><a href="#">My First Project</a></h5>
-                    <p>This is a placeholder for a summary of my first project. <a href="#" class="nu gray">Learn more</a></p>
-                </div>
-            </div>
-            <div class="event-summary">
-                <a class="event-summary__date t-center" href="#">
-                    <span class="event-summary__month">Apr</span>
-                    <span class="event-summary__day">02</span>
-                </a>
-                <div class="event-summary__content">
-                    <h5 class="event-summary__title headline headline--tiny"><a href="#">My Second Project</a></h5>
-                    <p>This is a placeholder for a summary of my second project. <a href="#" class="nu gray">Learn more</a></p>
-                </div>
-            </div>
-
-            <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Projects</a></p>
+            <p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Events</a></p>
         </div>
     </div>
     <div class="full-width-split__two">
