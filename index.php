@@ -24,7 +24,7 @@ get_header(); ?>
 
                 <div class="generic-content">
                     <?php the_excerpt(); ?>
-                    <p><a href="<?php echo the_permalink(); ?>">Continue reading &raquo;</a></p>
+                    <p><a class="btn btn--blue" href="<?php echo the_permalink(); ?>">Continue reading &raquo;</a></p>
                 </div>
             </div>
         <?php }
