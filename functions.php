@@ -11,6 +11,7 @@ function aittooja_files() {
 add_action('wp_enqueue_scripts', 'aittooja_files');
 
 function aittooja_features() {
+    register_nav_menu('headerMenuLocation', 'Header Menu Location');
     add_theme_support('title-tag');
 }
 
