@@ -44,7 +44,15 @@ get_header(); ?>
     <div class="full-width-split__two">
         <div class="full-width-split__inner">
             <h2 class="headline headline--small-plus t-center">From My Blogs</h2>
-
+            <?php 
+                $homepagePosts = new WP_Query(array(
+                    'posts_per_page' => 2, 
+                ));
+                while ($homepagePosts->have_posts()) {
+                    $homepagePosts->the_post(); ?>
+                    <li><?php the_title(); ?></li>
+                <?php } 
+            ?>
             <div class="event-summary">
                 <a class="event-summary__date event-summary__date--beige t-center" href="#">
                     <span class="event-summary__month">Jan</span>
