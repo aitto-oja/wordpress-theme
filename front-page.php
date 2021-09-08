@@ -8,7 +8,7 @@ get_header(); ?>
         <h1 class="headline headline--large">Hello, World!</h1>
         <h2 class="headline headline--medium">My name is Reeta.</h2>
         <h3 class="headline headline--small">Why don&rsquo;t you check out my <strong>projects</strong>?</h3>
-        <a href="#" class="btn btn--large btn--blue">Explore Projects</a>
+        <a href="<?php echo get_post_type_archive_link('project'); ?>" class="btn btn--large btn--blue">Explore Projects</a>
     </div>
 </div>
 
