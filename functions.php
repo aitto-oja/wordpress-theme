@@ -40,3 +40,7 @@ function aittooja_post_types() {
 }
 
 add_action('init', 'aittooja_post_types');
+
+function aittooja_adjust_queries() {}
+
+add_action('pre_get_posts', 'aittooja_adjust_queries');
