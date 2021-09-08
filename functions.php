@@ -21,7 +21,7 @@ add_action('after_setup_theme', 'aittooja_features');
 
 function aittooja_post_types() {
     register_post_type('event', array(
-        'supports' => array('title', 'editor', 'excerpt', 'custom-fields'), 
+        'supports' => array('title', 'editor', 'excerpt'), 
         'rewrite' => array(
             'slug' => 'events', 
         ), 
