@@ -20,6 +20,7 @@ function aittooja_features() {
 add_action('after_setup_theme', 'aittooja_features');
 
 function aittooja_post_types() {
+    // Event post type
     register_post_type('event', array(
         'supports' => array('title', 'editor', 'excerpt'), 
         'rewrite' => array(
@@ -36,6 +37,25 @@ function aittooja_post_types() {
             'singular_name' => 'Event', 
         ), 
         'menu_icon' => 'dashicons-calendar', 
+    ));
+
+    // Project post type
+    register_post_type('project', array(
+        'supports' => array('title', 'editor', 'excerpt'), 
+        'rewrite' => array(
+            'slug' => 'projects', 
+        ), 
+        'has_archive' => true, 
+        'public' => true, 
+        'show_in_rest' => true, 
+        'labels' => array(
+            'name' => 'Projects', 
+            'add_new_item' => 'Add New Project', 
+            'edit_item' => 'Edit Project', 
+            'all_items' => 'All Projects', 
+            'singular_name' => 'Project', 
+        ), 
+        'menu_icon' => 'dashicons-database', 
     ));
 }
 
