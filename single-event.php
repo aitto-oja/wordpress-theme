@@ -28,6 +28,23 @@ while(have_posts()) {
         <div class="generic-content">
             <?php the_content(); ?>
         </div>
+        <?php 
+            $relatedProjects = get_field('related_projects');
+            
+            if ($relatedProjects) {
+                echo '<hr class="section-break">';
+                echo '<h2 class="headline headline--medium">Related Project(s)</h2>';
+                echo '<ul class="link-list min-list">';
+                foreach($relatedProjects as $project) { ?>
+                    <li>
+                        <a href="<?php echo get_the_permalink(); ?>">
+                            <?php echo get_the_title(); ?>
+                        </a>
+                    </li>
+                <?php }
+                echo '</ul>';
+            }?>
+
     </div>
 <?php }
 
