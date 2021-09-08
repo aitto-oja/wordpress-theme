@@ -43,7 +43,9 @@ add_action('init', 'aittooja_post_types');
 
 function aittooja_adjust_queries($query) {
     if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
-        
+        $query->set('meta_key', 'event_date');
+        $query->set('orderby', 'meta_value_num');
+        $query->set('order', 'ASC');
     }
 }
 
