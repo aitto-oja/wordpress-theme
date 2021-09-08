@@ -28,8 +28,8 @@ while(have_posts()) {
                 echo '<ul class="link-list min-list">';
                 foreach($relatedProjects as $project) { ?>
                     <li>
-                        <a href="<?php echo get_the_permalink(); ?>">
-                            <?php echo get_the_title(); ?>
+                        <a href="<?php echo get_the_permalink($project); ?>">
+                            <?php echo get_the_title($project); ?>
                         </a>
                     </li>
                 <?php }
