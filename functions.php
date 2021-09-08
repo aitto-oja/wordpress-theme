@@ -41,6 +41,10 @@ function aittooja_post_types() {
 
 add_action('init', 'aittooja_post_types');
 
-function aittooja_adjust_queries() {}
+function aittooja_adjust_queries($query) {
+    if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
+        
+    }
+}
 
 add_action('pre_get_posts', 'aittooja_adjust_queries');
