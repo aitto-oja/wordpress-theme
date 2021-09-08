@@ -57,6 +57,22 @@ function aittooja_post_types() {
         ), 
         'menu_icon' => 'dashicons-database', 
     ));
+
+    // Language post type
+    register_post_type('language', array(
+        'supports' => array('title', 'editor', 'excerpt'),  
+        'public' => true, 
+        'show_in_rest' => true, 
+        'labels' => array(
+            'name' => 'Languages', 
+            'add_new_item' => 'Add New Language', 
+            'edit_item' => 'Edit Language', 
+            'all_items' => 'All Languages', 
+            'singular_name' => 'Language', 
+        ), 
+        'menu_icon' => 'dashicons-translation', 
+    ));
+
 }
 
 add_action('init', 'aittooja_post_types');
