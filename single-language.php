@@ -24,7 +24,7 @@ while(have_posts()) {
             
             if ($relatedProjects) {
                 echo '<hr class="section-break">';
-                echo '<h2 class="headline headline--medium">Related Project(s)</h2>';
+                echo '<h2 class="headline headline--medium">Language Used in Project(s)</h2>';
                 echo '<ul class="link-list min-list">';
                 foreach($relatedProjects as $project) { ?>
                     <li>
