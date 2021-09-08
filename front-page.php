@@ -29,7 +29,7 @@ get_header(); ?>
                         <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
                             <span class="event-summary__month">
                                 <?php 
-                                    $eventDate = new DateTime();
+                                    $eventDate = new DateTime(get_field('event_date'));
                                 ?>
                             </span>
                             <span class="event-summary__day">25</span>
