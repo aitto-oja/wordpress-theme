@@ -47,10 +47,35 @@ while(have_posts()) {
 
         if ($relatedLanguages->have_posts()) {
             echo '<hr class="section-break">';
-            echo '<h2 class="headline headline--medium">Languages used in this project</h2>';
+            echo '<h2 class="headline headline--medium">Languages in this project</h2>';
 
             while ($relatedLanguages->have_posts()) {
                 $relatedLanguages->the_post(); ?>
+                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+            <?php }
+        }
+        wp_reset_postdata();
+
+        $relatedFrameworks = new WP_Query(array( 
+            'posts_per_page' => -1, 
+            'post_type' => 'framework', 
+            'orderby' => 'title', 
+            'order' => 'ASC', 
+            'meta_query' => array( 
+                array(
+                    'key' => 'related_projects', 
+                    'compare' => 'LIKE',
+                    'value' => '"' . get_the_ID() . '"',  
+                ), 
+            ), 
+        ));
+
+        if ($relatedFrameworks->have_posts()) {
+            echo '<hr class="section-break">';
+            echo '<h2 class="headline headline--medium">Frameworks in this project</h2>';
+
+            while ($relatedFrameworks->have_posts()) {
+                $relatedFrameworks->the_post(); ?>
                 <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
             <?php }
         }
