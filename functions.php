@@ -85,7 +85,7 @@ function aittooja_post_types() {
             'all_items' => 'All Frameworks', 
             'singular_name' => 'Framework', 
         ), 
-        'menu_icon' => 'dashicons-translation', 
+        'menu_icon' => 'dashicons-media-interactive', 
     ));
 
 }
