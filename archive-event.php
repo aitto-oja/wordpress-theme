@@ -35,7 +35,7 @@ pageBanner(array(
 
     <p>
         Looking for a recap of past events? 
-        <a href="<?php site_url('/past-events') ?>">Check out past events archive</a>. 
+        <a href="<?php echo site_url('/past-events'); ?>">Check out past events archive</a>.
     </p>
 </div>
 
