@@ -49,10 +49,20 @@ while(have_posts()) {
             echo '<hr class="section-break">';
             echo '<h2 class="headline headline--medium">Languages in this project</h2>';
 
+            // TODO: change class name
+            echo '<ul class="professor-cards">';
             while ($relatedLanguages->have_posts()) {
                 $relatedLanguages->the_post(); ?>
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                <li class="professor-card__list-item">
+                    <a class="professor-card" href="<?php the_permalink(); ?>">
+                        <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>">
+                        <span class="professor-card__name">
+                            <?php the_title(); ?>
+                        </span>
+                    </a>
+                </li>
             <?php }
+            echo '</ul>';
         }
         wp_reset_postdata();
 
@@ -74,10 +84,19 @@ while(have_posts()) {
             echo '<hr class="section-break">';
             echo '<h2 class="headline headline--medium">Frameworks in this project</h2>';
 
+            echo '<ul class="professor-cards">';
             while ($relatedFrameworks->have_posts()) {
                 $relatedFrameworks->the_post(); ?>
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                <li class="professor-card__list-item">
+                    <a class="professor-card" href="<?php the_permalink(); ?>">
+                        <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>">
+                        <span class="professor-card__name">
+                            <?php the_title(); ?>
+                        </span>
+                    </a>
+                </li>
             <?php }
+            echo '</ul>';
         }
         wp_reset_postdata();
 
