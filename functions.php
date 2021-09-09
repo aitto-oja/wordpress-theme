@@ -73,6 +73,21 @@ function aittooja_post_types() {
         'menu_icon' => 'dashicons-translation', 
     ));
 
+    // Framework post type
+    register_post_type('framework', array(
+        'supports' => array('title', 'editor', 'excerpt'),  
+        'public' => true, 
+        'show_in_rest' => true, 
+        'labels' => array(
+            'name' => 'Frameworkd', 
+            'add_new_item' => 'Add New Framework', 
+            'edit_item' => 'Edit Framework', 
+            'all_items' => 'All Frameworks', 
+            'singular_name' => 'Framework', 
+        ), 
+        'menu_icon' => 'dashicons-translation', 
+    ));
+
 }
 
 add_action('init', 'aittooja_post_types');
