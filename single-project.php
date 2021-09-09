@@ -30,6 +30,32 @@ while(have_posts()) {
         </div>
         
         <?php 
+
+        $relatedLanguages = new WP_Query(array( 
+            'posts_per_page' => -1, 
+            'post_type' => 'language', 
+            'orderby' => 'title', 
+            'order' => 'ASC', 
+            'meta_query' => array( 
+                array(
+                    'key' => 'related_projects', 
+                    'compare' => 'LIKE',
+                    'value' => '"' . get_the_ID() . '"',  
+                ), 
+            ), 
+        ));
+
+        if ($relatedLanguages->have_posts()) {
+            echo '<hr class="section-break">';
+            echo '<h2 class="headline headline--medium">Languages used in this project</h2>';
+
+            while ($relatedLanguages->have_posts()) {
+                $relatedLanguages->the_post(); ?>
+                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+            <?php }
+        }
+        wp_reset_postdata();
+
         $today = date('Ymd');
         $relatedEvents = new WP_Query(array( 
             'post_type' => 'event', 
@@ -80,6 +106,8 @@ while(have_posts()) {
                 </div>
             <?php }
         }
+
+
 
          ?>
     </div>
