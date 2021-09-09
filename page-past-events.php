@@ -1,16 +1,11 @@
 <?php 
 
-get_header(); ?>
-
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/gray-satellite-disc-on-field-copy.jpg'); ?>)"></div>
-    <div class="page-banner__content container t-center c-white">
-        <h1 class="headline headline--large">Past Events</h1>
-        <div class="page-banner__intro">
-            <p>A recap of past events.</p>
-        </div>
-    </div>
-</div>
+get_header(); 
+pageBanner(array(
+    'title' => 'Past Events', 
+    'subtitle' => 'A recap of past events.', 
+));
+?>
 
 <div class="container container--narrow page-section">
     <?php 

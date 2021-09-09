@@ -1,20 +1,11 @@
 <?php 
 
-get_header(); ?>
-
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/gray-satellite-disc-on-field-copy.jpg'); ?>)"></div>
-    <div class="page-banner__content container t-center c-white">
-        <h1 class="headline headline--large">
-            <?php 
-                the_archive_title();
-            ?>
-        </h1>
-        <div class="page-banner__intro">
-            <p><?php the_archive_description(); ?></p>
-        </div>
-    </div>
-</div>
+get_header(); 
+pageBanner(array(
+    'title' => get_the_archive_title(), 
+    'subtitle' => get_the_archive_description(), 
+));
+?>
 
 <div class="container container--narrow page-section">
     <?php 

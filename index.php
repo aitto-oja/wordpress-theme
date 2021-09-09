@@ -1,16 +1,11 @@
 <?php 
 
-get_header(); ?>
-
-<div class="page-banner">
-    <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/gray-satellite-disc-on-field-copy.jpg'); ?>)"></div>
-    <div class="page-banner__content container t-center c-white">
-        <h1 class="headline headline--large">Welcome to my blog!</h1>
-        <div class="page-banner__intro">
-            <p>My thoughts about working with code.</p>
-        </div>
-    </div>
-</div>
+get_header(); 
+pageBanner(array(
+    'title' => 'Welcome to my blog!', 
+    'subtitle' => 'My thoughts about working with code. ', 
+));
+?>
 
 <div class="container container--narrow page-section">
     <?php 
