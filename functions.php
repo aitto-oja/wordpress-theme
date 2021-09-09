@@ -79,7 +79,7 @@ function aittooja_post_types() {
         'public' => true, 
         'show_in_rest' => true, 
         'labels' => array(
-            'name' => 'Frameworkd', 
+            'name' => 'Frameworks', 
             'add_new_item' => 'Add New Framework', 
             'edit_item' => 'Edit Framework', 
             'all_items' => 'All Frameworks', 
