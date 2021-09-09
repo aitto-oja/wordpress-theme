@@ -15,6 +15,7 @@ function aittooja_features() {
     register_nav_menu('footerLocationOne', 'Footer Location One');
     register_nav_menu('footerLocationTwo', 'Footer Location Two');
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
 }
 
 add_action('after_setup_theme', 'aittooja_features');
@@ -60,7 +61,7 @@ function aittooja_post_types() {
 
     // Language post type
     register_post_type('language', array(
-        'supports' => array('title', 'editor', 'excerpt'),  
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),  
         'public' => true, 
         'show_in_rest' => true, 
         'labels' => array(
@@ -75,7 +76,7 @@ function aittooja_post_types() {
 
     // Framework post type
     register_post_type('framework', array(
-        'supports' => array('title', 'editor', 'excerpt'),  
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),  
         'public' => true, 
         'show_in_rest' => true, 
         'labels' => array(
