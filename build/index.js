@@ -3788,12 +3788,14 @@ __webpack_require__.r(__webpack_exports__);
 class Search {
   // 1. Desctibe and create/initiate our object
   constructor() {
+    this.resultDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-overlay__results");
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-search-trigger");
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close");
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay");
     this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-term");
     this.events();
     this.isOverlayOpen = false;
+    this.isSpinnerVisible = false;
     this.typingTimer;
   } // 2. Events
 
@@ -3808,9 +3810,18 @@ class Search {
 
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(function () {
-      console.log("this is a timeout test");
-    }, 2000);
+
+    if (!this.isSpinnerVisible) {
+      this.resultDiv.html('<div class="spinner-loader"></div>');
+      this.isSpinnerVisible = true;
+    }
+
+    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+  }
+
+  getResults() {
+    this.resultDiv.html("Imagine real results here");
+    this.isSpinnerVisible = false;
   }
 
   keyPressDispatcher(e) {
