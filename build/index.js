@@ -3839,7 +3839,7 @@ class Search {
     // console.log(e.keyCode);
     // s == 83; esc == 27;
     // open search overlay if 's' is pressed
-    if (e.keyCode == 83 && !this.isOverlayOpen) {
+    if (e.keyCode == 83 && !this.isOverlayOpen && !jquery__WEBPACK_IMPORTED_MODULE_0___default()("input, textarea").is(":focus")) {
       this.openOverlay();
     } // close with esc
 

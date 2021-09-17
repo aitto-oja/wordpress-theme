@@ -54,7 +54,11 @@ class Search {
     // s == 83; esc == 27;
 
     // open search overlay if 's' is pressed
-    if (e.keyCode == 83 && !this.isOverlayOpen) {
+    if (
+      e.keyCode == 83 &&
+      !this.isOverlayOpen &&
+      !$("input, textarea").is(":focus")
+    ) {
       this.openOverlay();
     }
 
