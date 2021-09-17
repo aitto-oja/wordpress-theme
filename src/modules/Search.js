@@ -11,6 +11,7 @@ class Search {
     this.events();
     this.isOverlayOpen = false;
     this.isSpinnerVisible = false;
+    this.previousSearchValue;
     this.typingTimer;
   }
 
@@ -19,19 +20,27 @@ class Search {
     this.openButton.on("click", this.openOverlay.bind(this));
     this.closeButton.on("click", this.closeOverlay.bind(this));
     $(document).on("keydown", this.keyPressDispatcher.bind(this));
-    this.searchField.on("keydown", this.typingLogic.bind(this));
+    this.searchField.on("keyup", this.typingLogic.bind(this));
   }
 
   // 3. Methods
 
   typingLogic() {
-    clearTimeout(this.typingTimer);
-    if (!this.isSpinnerVisible) {
-      this.resultDiv.html('<div class="spinner-loader"></div>');
-      this.isSpinnerVisible = true;
-    }
+    if (this.searchField.val() != this.previousSearchValue) {
+      clearTimeout(this.typingTimer);
 
-    this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+      if (this.searchField.val()) {
+        if (!this.isSpinnerVisible) {
+          this.resultDiv.html('<div class="spinner-loader"></div>');
+          this.isSpinnerVisible = true;
+        }
+        this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+      } else {
+        this.resultDiv.html("");
+        this.isSpinnerVisible = false;
+      }
+    }
+    this.previousSearchValue = this.searchField.val();
   }
 
   getResults() {
