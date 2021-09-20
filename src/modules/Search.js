@@ -45,7 +45,8 @@ class Search {
 
   getResults() {
     $.getJSON(
-      "http://localhost:10008/wp-json/wp/v2/posts?search=" +
+      aittoojaData.root_url +
+        "/wp-json/wp/v2/posts?search=" +
         this.searchField.val(),
       (posts) => {
         this.resultDiv.html(`
