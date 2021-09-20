@@ -3788,6 +3788,7 @@ __webpack_require__.r(__webpack_exports__);
 class Search {
   // 1. Desctibe and create/initiate our object
   constructor() {
+    this.addSearchTHML();
     this.resultDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#search-overlay__results");
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".js-search-trigger");
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()(".search-overlay__close");
@@ -3819,7 +3820,7 @@ class Search {
           this.isSpinnerVisible = true;
         }
 
-        this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+        this.typingTimer = setTimeout(this.getResults.bind(this), 750);
       } else {
         this.resultDiv.html("");
         this.isSpinnerVisible = false;

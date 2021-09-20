@@ -3,6 +3,7 @@ import $ from "jquery";
 class Search {
   // 1. Desctibe and create/initiate our object
   constructor() {
+    this.addSearchTHML();
     this.resultDiv = $("#search-overlay__results");
     this.openButton = $(".js-search-trigger");
     this.closeButton = $(".search-overlay__close");
@@ -34,7 +35,7 @@ class Search {
           this.resultDiv.html('<div class="spinner-loader"></div>');
           this.isSpinnerVisible = true;
         }
-        this.typingTimer = setTimeout(this.getResults.bind(this), 2000);
+        this.typingTimer = setTimeout(this.getResults.bind(this), 750);
       } else {
         this.resultDiv.html("");
         this.isSpinnerVisible = false;
