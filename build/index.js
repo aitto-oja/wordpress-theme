@@ -3860,13 +3860,15 @@ class Search {
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
-    setTimeout(() => this.searchField.trigger("focus"), 301);
+    this.searchField.val("");
+    setTimeout(() => this.searchField.trigger("focus"), 310);
     this.isOverlayOpen = true;
   }
 
   closeOverlay() {
     this.searchOverlay.removeClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
+    this.searchField.trigger("focusout");
     this.isOverlayOpen = false;
   }
 
