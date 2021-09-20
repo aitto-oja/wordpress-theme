@@ -3830,8 +3830,14 @@ class Search {
   }
 
   getResults() {
-    this.resultDiv.html("Imagine real results here");
-    this.isSpinnerVisible = false;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON("http://localhost:10008/wp-json/wp/v2/posts?search=" + this.searchField.val(), posts => {
+      this.resultDiv.html(`
+          <h2 class="search-overlay__section-title">General Information</h2>
+          <ul class="link-list min-list">
+            ${posts.map(item => `<li><a href="${item.link}">${item.title.rendered}</a></li>`).join("")}
+          </ul>
+        `);
+    });
   }
 
   keyPressDispatcher(e) {
