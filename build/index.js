@@ -3860,6 +3860,7 @@ class Search {
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
+    setTimeout(() => this.searchField.trigger("focus"), 301);
     this.isOverlayOpen = true;
   }
 
