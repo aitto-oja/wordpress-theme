@@ -45,41 +45,53 @@ class Search {
   }
 
   getResults() {
-    $.when(
-      $.getJSON(
-        aittoojaData.root_url +
-          "/wp-json/wp/v2/posts?search=" +
-          this.searchField.val()
-      ),
-      $.getJSON(
-        aittoojaData.root_url +
-          "/wp-json/wp/v2/pages?search=" +
-          this.searchField.val()
-      )
-    ).then(
-      (posts, pages) => {
-        var combinedResults = posts[0].concat(pages[0]);
+    $.getJSON(
+      aittoojaData.root_url +
+        "/wp-json/aittooja/v1/search?term=" +
+        this.searchField.val(),
+      (results) => {
         this.resultDiv.html(`
-          <h2 class="search-overlay__section-title">General Information</h2>
-          ${
-            combinedResults.length
-              ? '<ul class="link-list min-list">'
-              : "<p>No general information matches that search.</p>"
-          }
-            ${combinedResults
-              .map(
-                (item) =>
-                  `<li><a href="${item.link}">${item.title.rendered}</a> ${
-                    item.type == "post" ? `by ${item.authorName}` : ``
-                  } </li>`
-              )
-              .join("")}
-          ${combinedResults.length ? "</ul>" : ""}
-        `);
+        <div class="row">
+          <div class="one-third">
+            <h2 class="search-overlay__section-title">General Information</h2>
+            ${
+              results.generalInfo.length
+                ? '<ul class="link-list min-list">'
+                : "<p>No general information matches that search.</p>"
+            } 
+              ${results.generalInfo
+                .map(
+                  (item) =>
+                    `<li><a href="${item.permalink}">${item.title}</a> ${
+                      item.postType == "post" ? `by ${item.authorName}` : ``
+                    } </li>`
+                )
+                .join("")}
+            ${results.generalInfo.length ? "</ul>" : ""}
+          </div>
+          <div class="one-third">
+            <h2 class="search-overlay__section-title">Projects</h2>
+            ${
+              results.projects.length
+                ? '<ul class="link-list min-list">'
+                : `<p>No projects match that search. <a href="${aittoojaData.root_url}/projects">View all projects</a></p>`
+            } 
+              ${results.projects
+                .map(
+                  (item) =>
+                    `<li><a href="${item.permalink}">${item.title}</a></li>`
+                )
+                .join("")}
+            ${results.projects.length ? "</ul>" : ""}
+            <h2 class="search-overlay__section-title">Events</h2>
+          </div>
+          <div class="one-third">
+            <h2 class="search-overlay__section-title">Languages</h2>
+            <h2 class="search-overlay__section-title">Frameworks</h2>
+          </div>
+        </div>
+      `);
         this.isSpinnerVisible = false;
-      },
-      () => {
-        this.resultDiv.html("<p>Unexpected error, please try again.</p>");
       }
     );
   }
