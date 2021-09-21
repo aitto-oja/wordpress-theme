@@ -90,7 +90,7 @@ function aittooja_post_types() {
 
     // Project post type
     register_post_type('project', array(
-        'supports' => array('title', 'editor', 'excerpt'), 
+        'supports' => array('title', 'excerpt'), 
         'rewrite' => array(
             'slug' => 'projects', 
         ), 
