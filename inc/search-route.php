@@ -47,6 +47,7 @@ function aittoojaSearchResults($data) {
             array_push($results['projects'], array(
                 'title' => get_the_title(), 
                 'permalink' => get_the_permalink(), 
+                'id' => get_the_id(), 
             ));
         }
 
@@ -76,6 +77,36 @@ function aittoojaSearchResults($data) {
             ));
         }
 
+    }
+
+    if ($results['projects']) {
+        $projectsMetaQuery = array('relation' => 'OR');
+
+        foreach($results['projects'] as $item) {
+            array_push($projectsMetaQuery, array(
+                'key' => 'related_projects', 
+                'compare' => 'LIKE', 
+                'value' => '"' . item['id'] . '"',  
+            ));
+        }
+    
+        $projectRelationshipQuery = new WP_Query(array(
+            'post_type' => 'language', 
+            'meta_query' => $projectsMetaQuery, 
+        ));
+    
+        while($projectRelationshipQuery->have_posts()) {
+            $projectRelationshipQuery->the_post();
+            if (get_post_type() == 'language') {
+                array_push($results['languages'], array(
+                    'title' => get_the_title(), 
+                    'permalink' => get_the_permalink(), 
+                    'image' => get_the_post_thumbnail_url(0), 
+                ));
+            }
+        }
+    
+        $results['languages'] = array_values(array_unique($results['languages'], SORT_REGULAR));
     }
 
     return $results;
