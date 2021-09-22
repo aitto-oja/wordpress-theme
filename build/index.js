@@ -3920,6 +3920,7 @@ class Search {
     this.searchField.val("");
     setTimeout(() => this.searchField.trigger("focus"), 310);
     this.isOverlayOpen = true;
+    return false;
   }
 
   closeOverlay() {
