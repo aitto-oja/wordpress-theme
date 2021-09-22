@@ -72,6 +72,7 @@ function aittooja_post_types() {
     // Event post type
     register_post_type('event', array(
         'capability_type' => 'event', 
+        'map_meta_cap' => true,
         'supports' => array('title', 'editor', 'excerpt'), 
         'rewrite' => array(
             'slug' => 'events', 
