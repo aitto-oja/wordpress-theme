@@ -3798,12 +3798,13 @@ class MyNotes {
   } //   Methods::
 
 
-  deleteNote() {
+  deleteNote(e) {
+    var thisNote = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).parents("li");
     jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
       beforeSend: xhr => {
         xhr.setRequestHeader("X-WP-Nonce", aittoojaData.nonce);
       },
-      url: aittoojaData.root_url + "/wp-json/wp/v2/note/92",
+      url: aittoojaData.root_url + "/wp-json/wp/v2/note/" + thisNote.data("id"),
       type: "DELETE",
       success: response => {
         console.log("Congrats!");
