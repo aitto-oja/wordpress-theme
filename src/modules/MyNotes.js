@@ -11,7 +11,21 @@ class MyNotes {
 
   //   Methods::
   deleteNote() {
-    alert("you clicked delete");
+    $.ajax({
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("X-WP-Nonce", aittoojaData.nonce);
+      },
+      url: aittoojaData.root_url + "/wp-json/wp/v2/note/92",
+      type: "DELETE",
+      success: (response) => {
+        console.log("Congrats!");
+        console.log(response);
+      },
+      error: (response) => {
+        console.log("Sorry");
+        console.log(response);
+      },
+    });
   }
 }
 
