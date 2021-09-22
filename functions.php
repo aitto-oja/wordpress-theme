@@ -142,6 +142,8 @@ function aittooja_post_types() {
 
     // Note post type
     register_post_type('note', array(
+        'capability_type' => 'note', 
+        'map_meta_cap' => true, 
         'supports' => array('title', 'editor'),  
         'public' => false, 
         'show_ui' => true, 
@@ -228,3 +230,13 @@ function myLoginTitle() {
 }
 
 add_filter('login_headertitle', 'myLoginTitle');
+
+// Force note posts to be private
+function makeNotePrivate($data) {
+    if ($data['post_type'] == 'note' AND $data['post_type'] != 'trash') {
+        $data['post_status'] = "private";
+    }
+    return $data;
+}
+
+add_filter('wp_insert_post_data', 'makeNotePrivate');
