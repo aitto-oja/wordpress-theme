@@ -243,7 +243,7 @@ function makeNotePrivate($data, $post_arr) {
         $data['post_title'] = sanitize_text_field($data['post_title']);
     }
 
-    if ($data['post_type'] == 'note' AND $data['post_type'] != 'trash') {
+    if ($data['post_type'] == 'note' AND $data['post_status'] != 'trash') {
         $data['post_status'] = "private";
     }
     return $data;
