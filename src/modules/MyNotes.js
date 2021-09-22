@@ -14,6 +14,9 @@ class MyNotes {
   editNote(e) {
     var thisNote = $(e.target).parents("li");
     thisNote
+      .find(".edit-note")
+      .html('<i class="fa fa-times" aria-hidden="true"></i> Cancel');
+    thisNote
       .find(".note-title-field, .note-body-field")
       .removeAttr("readonly")
       .addClass("note-active-field");
