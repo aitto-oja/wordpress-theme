@@ -71,6 +71,7 @@ add_action('after_setup_theme', 'aittooja_features');
 function aittooja_post_types() {
     // Event post type
     register_post_type('event', array(
+        'capability_type' => 'event', 
         'supports' => array('title', 'editor', 'excerpt'), 
         'rewrite' => array(
             'slug' => 'events', 
