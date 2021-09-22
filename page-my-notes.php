@@ -1,5 +1,8 @@
 <?php 
 
+if (!is_user_logged_in()) {
+    wp_redirect(esc_url(site_url('/')));
+}
 get_header();
 pageBanner();
 
