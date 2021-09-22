@@ -86,12 +86,12 @@ function aittoojaSearchResults($data) {
             array_push($projectsMetaQuery, array(
                 'key' => 'related_projects', 
                 'compare' => 'LIKE', 
-                'value' => '"' . item['id'] . '"',  
+                'value' => '"' . $item['id'] . '"',  
             ));
         }
     
         $projectRelationshipQuery = new WP_Query(array(
-            'post_type' => 'language', 
+            'post_type' => array('language', 'framework', 'event'), 
             'meta_query' => $projectsMetaQuery, 
         ));
     
@@ -104,9 +104,35 @@ function aittoojaSearchResults($data) {
                     'image' => get_the_post_thumbnail_url(0), 
                 ));
             }
+            if (get_post_type() == 'framework') {
+                array_push($results['frameworks'], array(
+                    'title' => get_the_title(), 
+                    'permalink' => get_the_permalink(), 
+                    'image' => get_the_post_thumbnail_url(0), 
+                ));
+            }
+            if (get_post_type() == 'event') {
+                $eventDate = new DateTime(get_field('event_date'));
+                $description = null;
+                if (has_excerpt()) {
+                    $description = get_the_excerpt();
+                } else {
+                    $description = wp_trim_words(get_the_content(), 10);
+                }
+    
+                array_push($results['events'], array(
+                    'title' => get_the_title(), 
+                    'permalink' => get_the_permalink(),
+                    'month' => $eventDate->format('M'), 
+                    'day' => $eventDate->format('d'),   
+                    'description' => $description, 
+                ));
+            }
         }
     
         $results['languages'] = array_values(array_unique($results['languages'], SORT_REGULAR));
+        $results['frameworks'] = array_values(array_unique($results['frameworks'], SORT_REGULAR));
+        $results['events'] = array_values(array_unique($results['events'], SORT_REGULAR));
     }
 
     return $results;
