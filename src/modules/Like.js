@@ -20,11 +20,29 @@ class Like {
   }
 
   createLike() {
-    alert("Create test message");
+    $.ajax({
+      url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
+      type: "POST",
+      success: (response) => {
+        console.log(response);
+      },
+      error: (response) => {
+        console.log(response);
+      },
+    });
   }
 
   deleteLike() {
-    alert("Delete test message");
+    $.ajax({
+      url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
+      type: "DELETE",
+      success: (response) => {
+        console.log(response);
+      },
+      error: (response) => {
+        console.log(response);
+      },
+    });
   }
 }
 
