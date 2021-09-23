@@ -13,16 +13,20 @@ class Like {
   myClickDispatcher(e) {
     var currentLikeBox = $(e.target).closest(".like-box");
     if (currentLikeBox.data("exists") == "yes") {
-      this.deleteLike();
+      this.deleteLike(currentLikeBox);
     } else {
-      this.createLike();
+      this.createLike(currentLikeBox);
     }
   }
 
-  createLike() {
+  createLike(currentLikeBox) {
     $.ajax({
       url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
       type: "POST",
+      data: {
+        likedId: currentLikeBox.data("like-id"),
+        likedType: currentLikeBox.data("like-type"),
+      },
       success: (response) => {
         console.log(response);
       },

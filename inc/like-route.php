@@ -11,8 +11,18 @@ function aittoojaLikeRoutes() {
     ));
 }
 
-function createLike() {
-    return 'Thanks for liking. ';
+function createLike($data) {
+    $liked = sanitize_text_field($data['likedId']);
+    $type = sanitize_text_field($data['likedType']);
+    
+    wp_insert_post(array(
+        'post_type' => 'like', 
+        'post_status' => 'publish', 
+        'post_title' => 'My 8th PHP Create Post Test',
+        'meta_input' => array(
+            'liked_' . $type .'_id' => $liked, 
+        ), 
+    ));
 }
 
 function deleteLike() {
