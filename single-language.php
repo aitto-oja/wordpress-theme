@@ -7,6 +7,7 @@ while(have_posts()) {
     the_post(); 
     ?>
     
+
     <div class="container container--narrow page-section">
         
         <div class="generic-content">
@@ -16,7 +17,7 @@ while(have_posts()) {
                     <?php the_post_thumbnail(); ?>
                 </div>
 
-                <div class="two-third">
+          <div class="two-thirds">
                     <?php 
                     $likeCount = new WP_Query(array(
                         'post_type' => 'like', 
@@ -47,7 +48,7 @@ while(have_posts()) {
                         $existStatus = 'yes';
                     }
                     ?>
-                    <span class="like-box" data-exist=<?php echo $existStatus; ?>>
+                    <span class="like-box" data-exists="<?php echo $existStatus; ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                         <i class="fa fa-heart" aria-hidden="true"></i>
                         <span class="like-count"><?php echo $likeCount->found_posts; ?></span>
@@ -73,7 +74,7 @@ while(have_posts()) {
                     </li>
                 <?php }
                 echo '</ul>';
-            }?>
+        }?>
 
     </div>
 <?php }
