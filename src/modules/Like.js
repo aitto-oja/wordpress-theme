@@ -10,8 +10,9 @@ class Like {
   }
 
   // Methods
-  myClickDispatcher() {
-    if ($(".like-box").data("exists") == "yes") {
+  myClickDispatcher(e) {
+    var currentLikeBox = $(e.target).closest(".like-box");
+    if (currentLikeBox.data("exists") == "yes") {
       this.deleteLike();
     } else {
       this.createLike();

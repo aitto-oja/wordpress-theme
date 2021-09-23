@@ -3771,8 +3771,10 @@ class Like {
   } // Methods
 
 
-  myClickDispatcher() {
-    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(".like-box").data("exists") == "yes") {
+  myClickDispatcher(e) {
+    var currentLikeBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest(".like-box");
+
+    if (currentLikeBox.data("exists") == "yes") {
       this.deleteLike();
     } else {
       this.createLike();
