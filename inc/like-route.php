@@ -45,8 +45,14 @@ function createLike($data) {
     }
 }
 
-function deleteLike() {
-    return 'Thanks for NOT liking.';
+function deleteLike($data) {
+    $likeId = sanitize_text_field($data['like']);
+    if (get_current_user_id() == get_post_field('post_author', $likeId) AND get_post_type($likeId) == 'like') {
+        wp_delete_post($liked, true);
+        return 'Congrats, like deleted.';
+    } else {
+        die("You do not have permission to delete that. ");
+    }
 }
 
 add_action('rest_api_init', 'aittoojaLikeRoutes');

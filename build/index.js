@@ -3774,7 +3774,7 @@ class Like {
   myClickDispatcher(e) {
     var currentLikeBox = jquery__WEBPACK_IMPORTED_MODULE_0___default()(e.target).closest(".like-box");
 
-    if (currentLikeBox.data("exists") == "yes") {
+    if (currentLikeBox.attr("data-exists") == "yes") {
       this.deleteLike(currentLikeBox);
     } else {
       this.createLike(currentLikeBox);
@@ -3797,6 +3797,7 @@ class Like {
         var likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
         likeCount++;
         currentLikeBox.find(".like-count").html(likeCount);
+        currentLikeBox.attr("data-like", response);
         console.log(response);
       },
       error: response => {
@@ -3805,11 +3806,22 @@ class Like {
     });
   }
 
-  deleteLike() {
+  deleteLike(currentLikeBox) {
     jquery__WEBPACK_IMPORTED_MODULE_0___default().ajax({
+      beforeSend: xhr => {
+        xhr.setRequestHeader("X-WP-Nonce", aittoojaData.nonce);
+      },
       url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
+      data: {
+        like: currentLikeBox.attr("data-like")
+      },
       type: "DELETE",
       success: response => {
+        currentLikeBox.attr("data-exists", "no");
+        var likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
+        likeCount--;
+        currentLikeBox.find(".like-count").html(likeCount);
+        currentLikeBox.attr("data-like", "");
         console.log(response);
       },
       error: response => {
