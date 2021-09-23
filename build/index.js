@@ -3793,6 +3793,10 @@ class Like {
         likedType: currentLikeBox.data("like-type")
       },
       success: response => {
+        currentLikeBox.attr("data-exists", "yes");
+        var likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
+        likeCount++;
+        currentLikeBox.find(".like-count").html(likeCount);
         console.log(response);
       },
       error: response => {
