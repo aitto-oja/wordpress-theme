@@ -17,14 +17,29 @@ function createLike($data) {
         $liked = sanitize_text_field($data['likedId']);
         $type = sanitize_text_field($data['likedType']);
         
-        return wp_insert_post(array(
+        $existQuery = new WP_Query(array(
+            'author' => get_current_user_id(), 
             'post_type' => 'like', 
-            'post_status' => 'publish', 
-            'post_title' => 'My 8th PHP Create Post Test',
-            'meta_input' => array(
-                'liked_' . $type .'_id' => $liked, 
+            'meta_query' => array(
+                array(
+                    'key' => 'liked_'. $type .'_id', 
+                    'compare' => '=', 
+                    'value' => $like, 
+                ), 
             ), 
         ));
+        if ($existQuery->found_posts == 0) {
+            return wp_insert_post(array(
+                'post_type' => 'like', 
+                'post_status' => 'publish', 
+                'post_title' => 'My 8th PHP Create Post Test',
+                'meta_input' => array(
+                    'liked_' . $type .'_id' => $liked, 
+                ), 
+            ));
+        } else {
+            die("Invalid like id");
+        }
     } else {
         die("Only logged in users can create a like.");
     }
