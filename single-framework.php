@@ -47,7 +47,7 @@ while(have_posts()) {
                         }
                     }
                     ?>
-                    <span class="like-box" data-like-id="<?php the_ID(); ?>" data-like-type="<?php echo get_post_type(); ?>" data-exists="<?php echo $existStatus; ?>">
+                    <span class="like-box" data-like-target-id="<?php the_ID(); ?>" data-like-type="<?php echo get_post_type(); ?>" data-exists="<?php echo $existStatus; ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                         <i class="fa fa-heart" aria-hidden="true"></i>
                         <span class="like-count"><?php echo $likeCount->found_posts; ?></span>

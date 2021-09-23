@@ -27,7 +27,7 @@ class Like {
       url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
       type: "POST",
       data: {
-        likedId: currentLikeBox.data("like-id"),
+        likedId: currentLikeBox.data("like-target-id"),
         likedType: currentLikeBox.data("like-type"),
       },
       success: (response) => {
