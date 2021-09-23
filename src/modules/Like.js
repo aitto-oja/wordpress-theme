@@ -21,6 +21,9 @@ class Like {
 
   createLike(currentLikeBox) {
     $.ajax({
+      beforeSend: (xhr) => {
+        xhr.setRequestHeader("X-WP-Nonce", aittoojaData.nonce);
+      },
       url: aittoojaData.root_url + "/wp-json/aittooja/v1/manageLike",
       type: "POST",
       data: {

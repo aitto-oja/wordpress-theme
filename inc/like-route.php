@@ -12,17 +12,22 @@ function aittoojaLikeRoutes() {
 }
 
 function createLike($data) {
-    $liked = sanitize_text_field($data['likedId']);
-    $type = sanitize_text_field($data['likedType']);
-    
-    wp_insert_post(array(
-        'post_type' => 'like', 
-        'post_status' => 'publish', 
-        'post_title' => 'My 8th PHP Create Post Test',
-        'meta_input' => array(
-            'liked_' . $type .'_id' => $liked, 
-        ), 
-    ));
+
+    if (is_user_logged_in()) {
+        $liked = sanitize_text_field($data['likedId']);
+        $type = sanitize_text_field($data['likedType']);
+        
+        return wp_insert_post(array(
+            'post_type' => 'like', 
+            'post_status' => 'publish', 
+            'post_title' => 'My 8th PHP Create Post Test',
+            'meta_input' => array(
+                'liked_' . $type .'_id' => $liked, 
+            ), 
+        ));
+    } else {
+        die("Only logged in users can create a like.");
+    }
 }
 
 function deleteLike() {
