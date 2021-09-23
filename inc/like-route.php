@@ -28,7 +28,7 @@ function createLike($data) {
                 ), 
             ), 
         ));
-        if ($existQuery->found_posts == 0) {
+        if ($existQuery->found_posts == 0 AND (get_post_type($liked) == 'language' OR get_post_type($liked) == 'framework')) {
             return wp_insert_post(array(
                 'post_type' => 'like', 
                 'post_status' => 'publish', 
