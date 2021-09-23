@@ -3757,11 +3757,35 @@ class HeroSlider {
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "jquery");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+
 class Like {
-  constructor() {}
+  constructor() {
+    this.events();
+  }
 
-  events() {} // Methods
+  events() {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(".like-box").on("click", this.myClickDispatcher.bind(this));
+  } // Methods
 
+
+  myClickDispatcher() {
+    if (jquery__WEBPACK_IMPORTED_MODULE_0___default()(".like-box").data("exists") == "yes") {
+      this.deleteLike();
+    } else {
+      this.createLike();
+    }
+  }
+
+  createLike() {
+    alert("Create test message");
+  }
+
+  deleteLike() {
+    alert("Delete test message");
+  }
 
 }
 
